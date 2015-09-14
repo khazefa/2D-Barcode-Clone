@@ -124,10 +124,10 @@ public class BarcodeReader {
 			long start = System.currentTimeMillis(); //start timer
                         numberOfTIFFiles = 0;
                         successCounter = 0;
-			for (int fileInList = 0; fileInList < files.length; fileInList++) {  //looping all images within folder
-				if(files[fileInList].toString().endsWith("tif")) {	//filter file search with TIFs
+			for (int j = 0; j < files.length; j++) {  //looping all images within folder
+				if(files[j].toString().endsWith(".tif")) {	//filter file search with TIFs
 					numberOfTIFFiles++;
-					readBarcode(files[fileInList].toString(), scanResult, "", fileInList); //read from folder
+					readBarcode(files[j].toString(), scanResult, "", j); //read from folder
 				}
 			}
 			
@@ -286,7 +286,7 @@ public class BarcodeReader {
                                             if(sanityCheck(barcodeValue,";") == 146 || sanityCheck(barcodeValue,";") == 156 
                                                     || sanityCheck(barcodeValue,";") == 154 || sanityCheck(barcodeValue,";") == 166 
                                                     || sanityCheck(barcodeValue,";") == 170 || sanityCheck(barcodeValue,";") == 172 
-                                                    || sanityCheck(barcodeValue,";") == 173 ) {
+                                                    || sanityCheck(barcodeValue,";") == 173 || sanityCheck(barcodeValue,";") == 175 ) {
                                                     quotationValue[counter] = barcodeValue;
                                                     quotationImages[counter] = new File(fileFolder).toPath().getFileName().toString();
                                                     System.out.println("Detected 2D barcode with Image value --> " + quotationImages[counter]);
